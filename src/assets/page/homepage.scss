@@ -1,0 +1,4 @@
+.homepage-container {
+    @extend %responsive-screen, %flex-center;
+    flex-direction: column;
+}

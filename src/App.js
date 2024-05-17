@@ -1,9 +1,7 @@
-import AddArticle from "./components/AddArticle/AddArticle.jsx";
+import HomePage from '../src/page/homepage.jsx';
 function App() {
   return (
-    <div>
-       <AddArticle />
-    </div>
+          <HomePage />
   );
 }
 

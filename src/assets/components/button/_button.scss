@@ -1,0 +1,29 @@
+.button-container {
+    width: 98%;
+
+    .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+        border: $greenColor;
+        color: white;
+        background-color: $greenColor ;
+    }
+
+    .css-1rwt2y5-MuiButtonBase-root-MuiButton-root:hover {
+        border: $greenColor;
+        color: white;
+        background-color: $greenColor ;
+    }
+
+    Button {
+        position: absolute;
+        height: 30px;
+        bottom: 0.5rem;
+        right: 0.5rem;
+        background-color: $greenColor;
+
+
+    }
+
+    Button:disabled {
+        background-color: $greyColor;
+    }
+}

@@ -3,7 +3,6 @@ body {
     padding: 0;
     box-sizing: border-box;
 
-    background-color: $bgColor;
 
 }
 
@@ -35,8 +34,8 @@ p {
 :root {
     font-family: $font-family !important;
     font-style: $font-style !important;
-    --font-family:Montserrat !important;
+    --font-family: Roboto !important;
     --font-feature-settings: normal !important;
-    --p-focus-ring-color: #1ABC9C;
-    --primary-color: #1ABC9C;
+    --p-focus-ring-color: #C56E4F;
+    --primary-color: #C56E4F;
 }

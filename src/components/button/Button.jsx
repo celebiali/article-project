@@ -1,11 +1,14 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import * as React from "react";
+import Button from "@mui/material/Button";
 
-export default function BasicButtons({ onClick }) {
+export default function Basicbutton({ onClick, formData, progress }) {
+  const isFormDataValid =
+    formData.title && formData.description && formData.image;
   return (
-    <Stack spacing={1} direction="row">
-      <Button variant="outlined" onClick={onClick}>Gönder</Button>
-    </Stack>
+    <div className="button-container">
+      <Button variant="outlined" onClick={onClick} disabled={!isFormDataValid}>
+        {progress === 0 ? "" : `${progress}%`}
+      </Button>
+    </div>
   );
 }

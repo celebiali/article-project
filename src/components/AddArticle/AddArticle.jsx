@@ -14,7 +14,6 @@ export default function AddArticle() {
     image: "",
     createdAt: Timestamp.now().toDate(),
   });
-  const [disabled, setDisabled] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const handleChange = (e) => {
@@ -26,11 +25,6 @@ export default function AddArticle() {
   };
 
   const handlePublish = () => {
-    if (!formData.title || !formData.description || !formData.image) {
-    setDisabled(true);
-      return;
-    }
-
     const storageRef = ref(
       storage,
       `/images/${Date.now()}${formData.image.name}`
@@ -62,6 +56,7 @@ export default function AddArticle() {
             title: formData.title,
             description: formData.description,
             imageUrl: url,
+            createdAt: Timestamp.now().toDate(),
           })
             .then(() => {
               setProgress(0);
@@ -75,27 +70,25 @@ export default function AddArticle() {
   };
 
   return (
-    <div className="article-container">
-        <Title
-          value={formData.title}
-          onChange={(e) => handleChange(e)}
-        />
+    <>
+      <div className="article-container-header">
+        <div className="article-container-header-content">
+          {formData.title ? formData.title : "New Title"}
+        </div>
+      </div>
+      <div className="article-container">
+        <Title value={formData.title} onChange={(e) => handleChange(e)} />
         <Description
           value={formData.description}
           onChange={(e) => handleChange(e)}
         />
         <Image onChange={(e) => handleImageChange(e)} />
-        {progress === 0 ? null : (
-          <div className="progress">
-            <div
-              className="progress-bar progress-bar-striped mt-2"
-              style={{ width: `${progress}%` }}
-            >
-              {`uploading image ${progress}%`}
-            </div>
-          </div>
-        )}
-        <Button onClick={handlePublish} disabled={disabled} />
-    </div>
+        <Button
+          onClick={handlePublish}
+          formData={formData}
+          progress={progress}
+        />
+      </div>
+    </>
   );
 }

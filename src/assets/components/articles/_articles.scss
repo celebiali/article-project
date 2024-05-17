@@ -30,4 +30,37 @@
     height: 532px;
     border-top-left-radius: 0;
     position: relative;
+    margin-bottom: 2rem;
+
+    &-content-title {
+        color: $mainColor;
+        font-size: $text-lg;
+        font-weight: 500;
+        padding: 12px
+    }
+
+    &-content-description {
+        padding: 18px 12px
+    }
+
+    &-content-image {
+        padding: 18px 12px;
+
+        .img {
+            object-fit: cover;
+            position: absolute;
+            margin-top: 2rem;
+            width: 98%;
+            height: 300px;
+
+            @include desktopView {
+                width: 96%;
+            }
+
+            @include mobileView {
+                width: 94%;
+            }
+        }
+    }
+
 }

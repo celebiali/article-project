@@ -1,0 +1,13 @@
+.title-input {
+    width: 100%;
+
+    .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input {
+        color: $mainColor;
+        font-size: $text-lg;
+        font-weight: 500;
+    }
+
+    fieldset {
+        display: none;
+    }
+}

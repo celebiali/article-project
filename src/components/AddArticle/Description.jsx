@@ -1,14 +1,17 @@
 import React from "react";
+import TextField from "@mui/material/TextField";
 
-export default function Description({ value, onChange }) {
+export default function Description({ onChange }) {
   return (
-    <>
-      <textarea
-        name="description"
-        className="form-control"
-        value={value}
-        onChange={onChange}
-      />
-    </>
+    <TextField
+      defaultValue="New Description"
+      onChange={onChange}
+      placeholder="New Description"
+      name="description"
+      rows={4}
+      multiline
+      className="description-input"
+      variant="outlined"
+    />
   );
 }
