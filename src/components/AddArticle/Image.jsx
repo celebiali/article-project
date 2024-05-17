@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Image({ onChange }) {
-  const [imageUrl, setImageUrl] = useState(null);
-
+export default function Image({ onChange, imageUrl, setImageUrl }) {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      setImageUrl(url);
+      setImageUrl(url); // Resmin URL'sini ayarla
       if (onChange) {
         onChange(event);
       }

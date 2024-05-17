@@ -15,6 +15,7 @@ export default function AddArticle() {
     createdAt: Timestamp.now().toDate(),
   });
   const [progress, setProgress] = useState(0);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,7 +62,7 @@ export default function AddArticle() {
                 image: "",
                 createdAt: Timestamp.now().toDate(),
               });
-              document.getElementById("article-form").reset(); // Reset the form
+              setImageUrl(null);
             })
             .catch((err) => {
               console.log(err);
@@ -85,7 +86,11 @@ export default function AddArticle() {
             value={formData.description}
             onChange={(e) => handleChange(e)}
           />
-          <Image onChange={(e) => handleImageChange(e)} />
+          <Image
+            onChange={(e) => handleImageChange(e)}
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+          />
           <Button
             onClick={handlePublish}
             formData={formData}
