@@ -1,5 +1,5 @@
 import React from "react";
-
+import ImageButton from "./ImageButton";
 export default function Image({ onChange, imageUrl, setImageUrl }) {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -26,12 +26,7 @@ export default function Image({ onChange, imageUrl, setImageUrl }) {
         {imageUrl ? (
           <img src={imageUrl} alt="Selected" className="img" />
         ) : (
-          <div className="custom-file-container-upload-btn">
-            <label htmlFor="file-upload" className="label">
-              <span className="plus">+</span>
-              <span className="text">GÖRSEL</span>
-            </label>
-          </div>
+          <ImageButton />
         )}
       </div>
     </div>
