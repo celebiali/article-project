@@ -24,12 +24,13 @@ export default function AddArticle() {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
-  const handlePublish = () => {
+  const handlePublish = (e) => {
+    e.preventDefault();
+
     const storageRef = ref(
       storage,
       `/images/${Date.now()}${formData.image.name}`
     );
-
     const uploadImage = uploadBytesResumable(storageRef, formData.image);
 
     uploadImage.on(
@@ -44,12 +45,6 @@ export default function AddArticle() {
         console.log(err);
       },
       () => {
-        setFormData({
-          title: "",
-          description: "",
-          image: "",
-        });
-
         getDownloadURL(uploadImage.snapshot.ref).then((url) => {
           const articleRef = collection(db, "Articles");
           addDoc(articleRef, {
@@ -60,6 +55,13 @@ export default function AddArticle() {
           })
             .then(() => {
               setProgress(0);
+              setFormData({
+                title: "",
+                description: "",
+                image: "",
+                createdAt: Timestamp.now().toDate(),
+              });
+              document.getElementById("article-form").reset(); // Reset the form
             })
             .catch((err) => {
               console.log(err);
@@ -77,17 +79,19 @@ export default function AddArticle() {
         </div>
       </div>
       <div className="article-container">
-        <Title value={formData.title} onChange={(e) => handleChange(e)} />
-        <Description
-          value={formData.description}
-          onChange={(e) => handleChange(e)}
-        />
-        <Image onChange={(e) => handleImageChange(e)} />
-        <Button
-          onClick={handlePublish}
-          formData={formData}
-          progress={progress}
-        />
+        <form id="article-form" onSubmit={handlePublish}>
+          <Title value={formData.title} onChange={(e) => handleChange(e)} />
+          <Description
+            value={formData.description}
+            onChange={(e) => handleChange(e)}
+          />
+          <Image onChange={(e) => handleImageChange(e)} />
+          <Button
+            onClick={handlePublish}
+            formData={formData}
+            progress={progress}
+          />
+        </form>
       </div>
     </>
   );
