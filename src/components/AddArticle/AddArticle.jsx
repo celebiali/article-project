@@ -63,6 +63,7 @@ export default function AddArticle() {
                 createdAt: Timestamp.now().toDate(),
               });
               setImageUrl(null);
+              document.getElementById("article-form").reset();
             })
             .catch((err) => {
               console.log(err);
