@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    background-color: $bgColor;
+
+}
+
+p {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+
+    &-thumb {
+        background: #888;
+        border-radius: 10px;
+        z-index: 99;
+
+        &:hover {
+            background: $mainColor;
+        }
+
+    }
+
+    &-track {
+        background: transparent;
+    }
+}
+
+:root {
+    font-family: $font-family !important;
+    font-style: $font-style !important;
+    --font-family:Montserrat !important;
+    --font-feature-settings: normal !important;
+    --p-focus-ring-color: #1ABC9C;
+    --primary-color: #1ABC9C;
+}
