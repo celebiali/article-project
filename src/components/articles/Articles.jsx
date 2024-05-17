@@ -1,6 +1,6 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebaseConfig.js";
+import { db } from "../../firebaseConfig";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);

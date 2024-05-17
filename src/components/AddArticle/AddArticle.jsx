@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../../firebaseConfig.js";
+import { storage, db } from "../../firebaseConfig";
 import Title from "../AddArticle/Title";
 import Description from "../AddArticle/Description";
 import Image from "../AddArticle/Image";
